@@ -206,7 +206,7 @@ else:
         env.Append(CPPPATH=["libsodium-1.0.5/src/libsodium/include"])
     conf.Finish()
 
-env.Append(CPPPATH="../../src")
+env.Append(CPPPATH="../../common")
 env.Append(LIBS=[libsodium])
 env.Depends("sodium.cpp", libsodium) # Ensure that header files are created.
 env.SharedLibrary("neon_sodium", "sodium.cpp")
