@@ -4976,7 +4976,7 @@ FUNCTION test_pwhash()
     ASSERT out <> out2
     ASSERT sodium.pwhash_scryptsalsa208sha256_str_verify(out, passwd)
     ASSERT sodium.pwhash_scryptsalsa208sha256_str_verify(out, passwd)
-    out[14] := chr(ord(out[14]) + 1)
+    out[14] := string.fromCodePoint(string.toCodePoint(out[14]) + 1)
     ASSERT NOT sodium.pwhash_scryptsalsa208sha256_str_verify(out, passwd)
 END FUNCTION
 
