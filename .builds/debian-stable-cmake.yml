@@ -1,0 +1,9 @@
+image: debian/stable
+packages:
+- scons
+sources:
+- https://github.com/ghewgill/neon-sodium
+tasks:
+- build: |
+    cd neon-sodium
+    scons

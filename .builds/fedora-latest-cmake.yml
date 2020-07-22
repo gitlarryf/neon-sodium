@@ -1,0 +1,10 @@
+image: fedora/latest
+packages:
+- g++
+- scons
+sources:
+- https://github.com/ghewgill/neon-sodium
+tasks:
+- build: |
+    cd neon-sodium
+    scons

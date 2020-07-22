@@ -202,7 +202,7 @@ if sys.platform == "win32":
 else:
     conf = Configure(env)
     if not conf.CheckLibWithHeader("sodium", "sodium.h", "C++"):
-        libsodium = sodiumenv.Command("libsodium-1.0.5/src/libsodium/.libs/libsodium.a", "libsodium-1.0.5/configure", "cd lib/sodium/libsodium-1.0.5 && ./configure --enable-pie=no && make")
+        libsodium = sodiumenv.Command("libsodium-1.0.5/src/libsodium/.libs/libsodium.a", "libsodium-1.0.5/configure", "cd libsodium-1.0.5 && ./configure --enable-pie=no && make")
         env.Append(CPPPATH=["libsodium-1.0.5/src/libsodium/include"])
     conf.Finish()
 
