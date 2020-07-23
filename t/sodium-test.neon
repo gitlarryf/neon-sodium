@@ -1,6 +1,7 @@
 IMPORT binary
 IMPORT random
 IMPORT sodium
+IMPORT string
 
 LET FullTests: Boolean := FALSE
 LET Iterations: Number := (IF FullTests THEN 999 ELSE 9)
