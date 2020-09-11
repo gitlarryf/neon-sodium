@@ -1,8 +1,6 @@
-#|
- |  File: sodium
- |
- |  Interface file for https://libsodium.org.
- |#
+--  File: sodium
+--
+--  Interface file for https://libsodium.org.
 
 EXPORT SodiumException
 

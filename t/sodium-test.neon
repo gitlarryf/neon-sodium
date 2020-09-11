@@ -164,7 +164,7 @@ FUNCTION test_aead_aes256gcm()
             ciphertext WITH HEXBYTES "",
             mac        WITH HEXBYTES "3e5d486aa2e30b22e040b85723a06e76"
         ),
-        #|Test(
+        /*Test(
             key        WITH HEXBYTES "4457ff33683cca6ca493878bdc00373893a9763412eef8cddb54f91318e0da88",
             nonce      WITH HEXBYTES "699d1f29d7b8c55300bb1fd2",
             message    WITH HEXBYTES "",
@@ -3099,7 +3099,7 @@ FUNCTION test_aead_aes256gcm()
             ad         WITH HEXBYTES "00000000000000000000000000000000101112131415161718191a1b1c1d1e1f",
             ciphertext WITH HEXBYTES "3847bb9e60181f62ba36beae09cc3cfeb5958a16e37c72e87add8be814ee6dbbb98c0727709c84d26a6adf5e7b4e17cdfd84977b328d3eda489a30ff8d1875b530239d4abaf15a5903f516cac0c91b3a",
             mac        WITH HEXBYTES "39fa8fc1c78405e86326c97d428cd1c6"
-        ),|#
+        ),*/
     ]
     IF sodium.aead_aes256gcm_is_available() THEN
         FOREACH test IN tests DO
@@ -3268,7 +3268,7 @@ FUNCTION test_generichash()
             key WITH HEXBYTES "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
             out WITH HEXBYTES "961f6dd1e4dd30f63901690c512e78e4b45e4742ed197c3c5e45c549fd25f2e4187b0bc9fe30492b16b0d0bc4ef9b0f34c7003fac09a5ef1532e69430234cebd"
         ),
-        #|Test(
+        /*Test(
             in  WITH HEXBYTES "0001",
             key WITH HEXBYTES "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
             out WITH HEXBYTES "da2cfbe2d8409a0f38026113884f84b50156371ae304c4430173d08a99d9fb1b983164a3770706d537f49e0c916d9f32b95cc37a95b99d857436f0232c88a965"
@@ -4532,7 +4532,7 @@ FUNCTION test_generichash()
             in  WITH HEXBYTES "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfd",
             key WITH HEXBYTES "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
             out WITH HEXBYTES "d444bfa2362a96df213d070e33fa841f51334e4e76866b8139e8af3bb3398be2dfaddcbc56b9146de9f68118dc5829e74b0c28d7711907b121f9161cb92b69a9"
-        ),|#
+        ),*/
         Test(
             in  WITH HEXBYTES "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d3d4d5d6d7d8d9dadbdcdddedfe0e1e2e3e4e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfe",
             key WITH HEXBYTES "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
@@ -4862,7 +4862,7 @@ FUNCTION test_pwhash_tv3()
             out      WITH "$7$A6....1....TrXs5Zk6s8sWHpQgWDIXTR8kUU3s6Jc3s.DtdS8M2i4$a4ik5hGDN7foMuHOW.cp.CtX01UyCeO0.JAG.AHPpx5",
             expected WITH TRUE
         ),
-        # Invalid pwhash strings
+        -- Invalid pwhash strings
         Test(
             passwd   WITH "Y0!?iQa9M%5ekffW(`",
             out      WITH "$7$A6....1....$TrXs5Zk6s8sWHpQgWDIXTR8kUU3s6Jc3s.DtdS8M2i4a4ik5hGDN7foMuHOW.cp.CtX01UyCeO0.JAG.AHPpx5",
@@ -4971,7 +4971,7 @@ FUNCTION test_pwhash()
     CONSTANT OPS_LIMIT: Number := 1000000
     CONSTANT MEM_LIMIT: Number := 10000000
     LET passwd: String := "Correct Horse Battery Staple"
-    #LET salt: Bytes := bytes("[<~A 32-bytes salt for scrypt~>]")
+    --LET salt: Bytes := bytes("[<~A 32-bytes salt for scrypt~>]")
     VAR out: String := sodium.pwhash_scryptsalsa208sha256_str(passwd, OPS_LIMIT, MEM_LIMIT)
     VAR out2: String := sodium.pwhash_scryptsalsa208sha256_str(passwd, OPS_LIMIT, MEM_LIMIT)
     TESTCASE out <> out2
@@ -5006,7 +5006,7 @@ FUNCTION test_randombytes()
     END FOR
     TESTCASE sodium.randombytes_uniform(1) = 0
     sodium.randombytes_close()
-    #| TODO: salsa20
+    /* TODO: salsa20
     sodium.randombytes_set_implementation(randombytes_salsa20_implementation)
     TESTCASE sodium.randombytes_implementation_name() = "salsa20"
     sodium.randombytes.stir()
@@ -5019,7 +5019,7 @@ FUNCTION test_randombytes()
     FOR i := 0 TO 255 DO
         TESTCASE freq[i] > 0
     END FOR
-    |#
+    */
 
     LET x: Array<Number> := sodium.randombytes(65536).toArray()
     FOR i := 0 TO 255 DO
@@ -5247,7 +5247,7 @@ FUNCTION test_sign()
             m := sodium.sign_open(sm, td.pk)
         TRAP sodium.SodiumException.DecryptionFailed DO
         END TRY
-        # do short signed message
+        -- do short signed message
         LET sig: Bytes := sodium.sign_detached(td.m, td.sk & td.pk)
         TESTCASE sig.size() > 0 AND sig.size() <= sodium.sign_BYTES
         TESTCASE sig = td.sig
