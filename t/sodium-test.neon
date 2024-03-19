@@ -7,7 +7,7 @@ LET FullTests: Boolean := FALSE
 LET Iterations: Number := (IF FullTests THEN 999 ELSE 9)
 
 FUNCTION bytes(s: String): Bytes
-    RETURN s.toBytes()
+    RETURN s.encodeUTF8()
 END FUNCTION
 
 FUNCTION pad_bytes(s: String, len: Number): Bytes
@@ -3137,9 +3137,9 @@ FUNCTION test_auth5()
         VAR a: Bytes := sodium.auth(c, key)
         TESTCASE sodium.auth_verify(a, c, key)
         IF clen > 0 THEN
-            tweak(INOUT c, random.uint32() MOD clen, 1 + random.uint32() MOD 255)
+            tweak(INOUT c, random.uint32() MOD clen, 1 + (random.uint32() MOD 255))
             TESTCASE NOT sodium.auth_verify(a, c, key)
-            tweak(INOUT a, random.uint32() MOD a.size(), 1 + random.uint32() MOD 255)
+            tweak(INOUT a, random.uint32() MOD a.size(), 1 + (random.uint32() MOD 255))
             TESTCASE NOT sodium.auth_verify(a, c, key)
         END IF
     END FOR
@@ -3158,9 +3158,9 @@ FUNCTION test_auth7()
         VAR a: Bytes := sodium.auth_hmacsha512(c, key)
         TESTCASE sodium.auth_hmacsha512_verify(a, c, key)
         IF clen > 0 THEN
-            tweak(INOUT c, random.uint32() MOD clen, 1 + random.uint32() MOD 255)
+            tweak(INOUT c, random.uint32() MOD clen, 1 + (random.uint32() MOD 255))
             TESTCASE NOT sodium.auth_hmacsha512_verify(a, c, key)
-            tweak(INOUT a, random.uint32() MOD a.size(), 1 + random.uint32() MOD 255)
+            tweak(INOUT a, random.uint32() MOD a.size(), 1 + (random.uint32() MOD 255))
             TESTCASE NOT sodium.auth_hmacsha512_verify(a, c, key)
         END IF
     END FOR
@@ -4620,7 +4620,7 @@ FUNCTION test_generichash()
         ina[i] := i
         in := ina[FIRST TO i-1].toBytes()
         LET k: Bytes := ka[FIRST TO i MOD sodium.generichash_KEYBYTES_MAX].toBytes()
-        TESTCASE sodium.generichash(1 + i MOD sodium.generichash_BYTES_MAX, in, k) = result[i]
+        TESTCASE sodium.generichash(1 + (i MOD sodium.generichash_BYTES_MAX), in, k) = result[i]
     END FOR
     in := ina.toBytes()
     TESTCASE sodium.generichash(sodium.generichash_BYTES_MAX, in, HEXBYTES "") = HEXBYTES "2fc6e69fa26a89a5ed269092cb9b2a449a4409a7a44011eecad13d7c4b0456602d402fa5844f1a7a758136ce3d5d8d0e8b86921ffff4f692dd95bdc8e5ff0052"
@@ -4655,9 +4655,9 @@ FUNCTION test_onetimeauth7()
         VAR a: Bytes := sodium.onetimeauth(c, key)
         TESTCASE sodium.onetimeauth_verify(a, c, key)
         IF clen > 0 THEN
-            tweak(INOUT c, random.uint32() MOD clen, 1 + random.uint32() MOD 255)
+            tweak(INOUT c, random.uint32() MOD clen, 1 + (random.uint32() MOD 255))
             TESTCASE NOT sodium.onetimeauth_verify(a, c, key)
-            tweak(INOUT a, random.uint32() MOD a.size(), 1 + random.uint32() MOD 255)
+            tweak(INOUT a, random.uint32() MOD a.size(), 1 + (random.uint32() MOD 255))
             TESTCASE NOT sodium.onetimeauth_verify(a, c, key)
         END IF
     END FOR
